@@ -49,13 +49,13 @@ this.displayProducts=this.displayProducts.bind(this);
             <div>
                 <div>
                    
-                    <Link to="/shop" style={{textDecoration: 'none'}}>
+                    <Link to="/shop" style={{textDecoration: 'none', color: '#434343'}}>
                         <h1>SHOP</h1>
                     </Link>
-                    <Link to="/login" style={{textDecoration: 'none'}}>
+                    <Link to="/login" style={{textDecoration: 'none', color: '#434343'}}>
                         <h1>SELL</h1>
                     </Link>
-                    <Link to="/login" style={{textDecoration: 'none'}}>
+                    <Link to="/login" style={{textDecoration: 'none', color: '#434343'}}>
                         <h1>REPEAT.</h1>
                     </Link>
                 </div>

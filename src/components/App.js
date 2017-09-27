@@ -8,16 +8,10 @@ import Cart from './cart';
 import Login from './login';
 import Catalog from './catalog';
 import About from './About';
-
+import Contact from './contact';
 
 class App extends Component {
-  constructor(){
-    super();
-
-    this.state={
-      openNavbar: false
-    };
-  }
+  
     
 //change phone number to allow a call to be made if done on a mobile device
   render() {
@@ -25,11 +19,11 @@ class App extends Component {
      <div>
           <div className='NavBar1'>
             <div>844.448.LUXE</div>
-            <div><Link to='/contact' style={{textDecoration: 'none'}}>Contact</Link></div>
-            <div><Link to ='/login' style={{textDecoration: 'none'}}>Login</Link></div>
-            <div><Link to='/cart' style={{textDecoration: 'none'}}>Cart</Link></div>
-            <div><Link to='/about' style={{textDecoration: 'none'}}>About Us</Link></div>
-            <div><Link to='/login' style={{textDecoration: 'none'}}>Sell Your Bag</Link></div>
+            <div><Link to='/contact' style={{textDecoration: 'none', color: "white"}}>Contact</Link></div>
+            <div><Link to ='/login' style={{textDecoration: 'none', color: "white"}}>Login</Link></div>
+            <div><Link to='/cart' style={{textDecoration: 'none', color: "white"}}>Cart</Link></div>
+            <div><Link to='/about' style={{textDecoration: 'none', color: "white"}}>About Us</Link></div>
+            <div><Link to='/login' style={{textDecoration: 'none', color: "white"}}>Sell Your Bag</Link></div>
           </div>
 
           <div>Luv Luxe</div>
@@ -50,7 +44,13 @@ class App extends Component {
               <Route path='/login' component={Login}/>
               <Route path='/shop' component={Catalog}/>
               <Route path='/about' component={About}/>
+              <Route path='/contact' component={Contact}/>
           </div>
+
+          <div className="Footer">
+                
+          </div>
+
 
     </div> 
     );
