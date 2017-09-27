@@ -19,3 +19,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# ** ignores any folder inside the src folder that has css files 
+# * ignores only the css files in the src folder
+src/**/*.css
