@@ -1,40 +1,80 @@
 const express= require ('express'),
     bodyParser= require ('body-parser'),
     cors= require ('cors'),
+    massive=require ('massive');
+
+ // allows this to connect to process.env once we attempt to invoke massive.    
+    require('dotenv').config()
 
 
-    app=express();
-    const port= 3030
-    app.listen(port, ()=>console.log(`listening on port ${port}`));
+   const app =express();
+
 
     app.use(bodyParser.json());
 
-    var fakeData= 
-    [{
-        id: 0,
-        imageUrl: '',
-        brand: 'Louis Vuitton',
-        price: 300 ,
-    },{
-        id: 1,
-        imageUrl:'',
-        brand: 'Gucci',
-        price: 400,
-    },{
-        id: 2,
-        imageUrl:'',
-        brand: 'Chanel',
-        price: 500,
-    }]
-
-    app.get('/api/products',(req,res)=>{
-        // req.app.get(fakeData).then((products)=>{
-        //     res.json(products);
-        // })
-        res.json(fakeData);
+// Massive is a library that looks in the DB folder looking for SQL files that turn the sql functions into javascript functions.
+// In order to connect to massive you must put in the CONNECTION STRING that our database provides to us as a parameter. Heroku gives the connection string to the postgres database we created.
+// .env file is a way to hide private data from github.
+// app is where we are storing our DB instance 
+    massive(process.env.CONNECTION_STRING).then((dbInstance)=>{
+        app.set('db',dbInstance)
+        console.log("connected to DB")
     })
 
+
+   
+
+    app.get('/api/products',(req,res)=>{
+        console.log(req.app.get('db'));
+        const db= req.app.get('db');
+        db.getProducts().then((products)=>{
+            res.json(products);
+        })
+    })
+
+    app.get('/api/details/:id',(req,res)=>{
+        res.app.get('db').returnProductById([req.params.id]).then((product)=>{
+            res.json(product[0])
+        })
+    })
+
+ 
+    app.post('/api/cart',(req,res)=>{
+        const {userid,product}=req.body
+        // determines whether the user already has a cart.
+        res.app.get('db').cartcheck(userid).then((cart)=>{
+                if (cart[0]){
+                    res.app.get('db').duplicateitems([product,cart[0].id]).then((lineitem)=>{
+        //determines whether there are duplicate items in the cart
+                        if(lineitem[0]){
+                            res.app.get('db').
+                        } else console.log('no dups')
+                    }).catch((err)=>{console.log(err)})
+
+        // user has no cart            
+         } else console.log('cart not found')
+
+        })
+
+        
+    })
+
+    // Store an entire content of someones cart.
+    // add something to a cart
+    // retrieve infor from what is inside of that particular cart.
+
+    
+
     // create an end point that receives a request from the agent for saving an object to the cart.
-    // app.post('/api/cart',(req,res)=>{
-    //     [req.body.name, req.body.condition, req.body.price].then(()=>{res.send("Successfully Added To Cart")
-    // })})
+    app.post('/api/cart',(req,res)=>{
+        req.app.get('db').addToCart(
+            [req.body.productname,
+            req.body.price]
+        ).then(()=>{console.log('added product successfully'); res.send ('product added successfully')});
+        
+    })
+
+
+
+    const port= 3030
+    app.listen(port, ()=>console.log(`listening on port ${port}`));

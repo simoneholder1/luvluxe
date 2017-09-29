@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import {addToCart} from '../ducks/reducer';
 import axios from 'axios';
+
+// import {connect} from 'react-redux';
+
+
+// import {addToCart} from '../ducks/reducer';
+
 
 class Details extends Component {
     constructor(){
@@ -10,39 +14,59 @@ class Details extends Component {
         this.state={
             productDetails:{}
         }
+
+  
     }
-
-componentDidMount(){
-    axios.get(`api/products/${this.props.match.params.name}`).then((res)=>{
-        this.setState({
-            productDetails: res.data
-        })
-    })
-}    
-
 // addToCart(){
-//     axios.post('/api/cart').then((res)=>{this.props.addToCart(products)
+//     axios.post(`/api/cart/${this.props.match.params.id}`).then((res)=>{this.props.addToCart()
         
 //     })
 // }
+
+
+
+  componentWillMount(){
+    axios.get(`/api/details/${this.props.match.params.id}`).then((res)=>{
+        
+        this.setState({
+            productDetails: res.data
+        })
+    }).catch((error)=>{console.log(error)})
+  }
+
+
     render() {
-        const displayProducts= this.props.products.map
-
-        return (
-            <div>
-                <img/>
-                <h1>{this.state.productDetails.name}</h1>
-                <p>{this.state.productDetails.condition}</p>
-                <p>{this.state.productDetails.price}</p>
-                <button onClick={()=>{
-                    }}>Add to Cart</button>
+      console.log(this.state);
+            return (
+                <div>
+                    <div className="product" >
+                <img src={this.state.productDetails.imageurl}/></div>
+                <div>
+            <p>{this.state.productDetails.brand}</p>
+            <p>{this.state.productDetails.productname}</p>
+            <p>{this.state.productDetails.detail}</p>
+            <p>{this.state.productDetails.length}</p>
+            <p>{this.state.productDetails.width}</p>
+            <p>{this.state.productDetails.height}</p>
+            <p>{this.state.productDetails.drop}</p>
+            <p>{this.state.productDetails.productlocation}</p>
+            <p>{this.state.productDetails.yearmade}</p>
+            <p>{this.state.productDetails.comeswith}</p>
+            <p>${this.state.productDetails.price}</p>
             </div>
-        );
-    
-}
-}
 
-// function MapStateToProps(store){
+            <button onClick={()=>{
+                }}>Add to Cart</button>
+            </div> )
+                
+                
+
+        }
+    }
+    
+
+
+// function mapStateToProps(store){
 //     return{
 //         cart: store.cart
 //     }

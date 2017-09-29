@@ -9,6 +9,8 @@ import Login from './login';
 import Catalog from './catalog';
 import About from './About';
 import Contact from './contact';
+import Details from './details.js';
+import logo from '../logo.png';
 
 class App extends Component {
   
@@ -26,12 +28,12 @@ class App extends Component {
             <div><Link to='/login' style={{textDecoration: 'none', color: "white"}}>Sell Your Bag</Link></div>
           </div>
 
-          <div>Luv Luxe</div>
+          <div className='Logo'><Link to ='/'><img src={logo} height="30" width='156' /> </Link> </div>
 
           <div className='NavBar2'>
             <Link to='/new'></Link>
             <div>New Arrivals</div>
-            <div>Designers</div>
+            <div >Designers</div>
             <div>Handbags</div>
             <div>Accessories</div>
             <div>Jewelry</div>
@@ -45,10 +47,11 @@ class App extends Component {
               <Route path='/shop' component={Catalog}/>
               <Route path='/about' component={About}/>
               <Route path='/contact' component={Contact}/>
+              <Route path='/details/:id' component={Details}/>
           </div>
 
           <div className="Footer">
-                
+
           </div>
 
 

@@ -38,8 +38,9 @@ this.displayProducts=this.displayProducts.bind(this);
     render() {
         const displayProducts= this.state.products.map((products,index)=>{
             return (
-                <Link to={`/details/${products.id}`}>
-                <p>{products.imageUrl}</p>
+                <Link key={index} to={`/details/${products.id}`}>
+           
+                <img className="HomePageProducts" src={products.imageurl}/>
                 <p>{products.brand}</p>
                 <p>${products.price}</p>
                 </Link>
@@ -50,13 +51,13 @@ this.displayProducts=this.displayProducts.bind(this);
                 <div>
                    
                     <Link to="/shop" style={{textDecoration: 'none', color: '#434343'}}>
-                        <h1>SHOP</h1>
+                        <h1 className='shop'>SHOP</h1>
                     </Link>
                     <Link to="/login" style={{textDecoration: 'none', color: '#434343'}}>
-                        <h1>SELL</h1>
+                        <h1 className='sell' >SELL</h1>
                     </Link>
                     <Link to="/login" style={{textDecoration: 'none', color: '#434343'}}>
-                        <h1>REPEAT.</h1>
+                        <h1 className='repeat'>REPEAT.</h1>
                     </Link>
                 </div>
                 
