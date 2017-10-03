@@ -10,34 +10,85 @@ import Catalog from './catalog';
 import About from './About';
 import Contact from './contact';
 import Details from './details.js';
-import logo from '../logo.png';
+import DesignerDropDown from './DesignerDropDown';
 
 class App extends Component {
-  
+  constructor(){
+    super();
+    this.state = {
+      designers: false,
+      handbags: false,
+      accessories: false, 
+      jewelry: false,
+      discounted: false
+
+    }
+
+    this.handleHoverOn = this.handleHoverOn.bind(this);
+    this.handleHoverOff = this.handleHoverOff.bind(this);
+}
+
+//param is going to be one of the properties above.
+handleHoverOn(param){
+  var x = {}
+  x[param] = true;
+  this.setState(x)
+}
+
+handleHoverOff(param){
+  var x = {}
+  x[param] = false;
+  this.setState(x)
+ 
+}
+
+
     
 //change phone number to allow a call to be made if done on a mobile device
   render() {
+
+    var designerList = ()=>{
+      if( this.state.designers){
+        return( <div>
+          <DesignerDropDown/> 
+        </div>)
+      }
+    }
+
+
     return (
      <div>
           <div className='NavBar1'>
             <div>844.448.LUXE</div>
-            <div><Link to='/contact' style={{textDecoration: 'none', color: "white"}}>Contact</Link></div>
-            <div><Link to ='/login' style={{textDecoration: 'none', color: "white"}}>Login</Link></div>
+            <div><Link to='/contact' style={{textDecoration: 'none', color: "white"}}>contact</Link></div>
+            
+            <div ><Link to ='/login' style={{textDecoration: 'none', color: "white"}}>Login</Link></div>
             <div><Link to='/cart' style={{textDecoration: 'none', color: "white"}}>Cart</Link></div>
             <div><Link to='/about' style={{textDecoration: 'none', color: "white"}}>About Us</Link></div>
             <div><Link to='/login' style={{textDecoration: 'none', color: "white"}}>Sell Your Bag</Link></div>
+           
+            
           </div>
 
-          <div className='Logo'><Link to ='/'><img src={logo} height="30" width='156' /> </Link> </div>
+          <div className='Logo'><Link to ='/' style={{textDecoration: 'none', color: "#434343"}}> FASHIONPHILE </Link> </div>
 
           <div className='NavBar2'>
             <Link to='/new'></Link>
-            <div>New Arrivals</div>
-            <div >Designers</div>
-            <div>Handbags</div>
-            <div>Accessories</div>
-            <div>Jewelry</div>
-            <div>Discounted</div>
+            <div>NEW ARRIVALS</div>
+            
+          
+            <div onMouseOver={()=>{this.handleHoverOn('designers')}} onMouseLeave={()=>{this.handleHoverOff('designers')}} >DESIGNERS
+            {designerList()}
+            </div>
+            
+            <div onMouseOver={()=>{this.handleHoverOn('handbags')}} onMouseLeave={()=>{this.handleHoverOff('handbags')}}>HANDBAGS</div>
+            
+            <div onMouseOver={()=>{this.handleHoverOn('accessories')}} onMouseLeave={()=>{this.handleHoverOff('accessories')}}>ACCESSORIES</div>
+            
+            <div onMouseOver={()=>{this.handleHoverOn('jewelry')}} onMouseLeave={()=>{this.handleHoverOff('jewelry')}}>JEWELRY</div>
+            
+            <div onMouseOver={()=>{this.handleHoverOn('discounted')}} onMouseLeave={()=>{this.handleHoverOff('discounted')}}>DISCOUNTED</div>
+
           </div>
 
           <div>
@@ -48,13 +99,14 @@ class App extends Component {
               <Route path='/about' component={About}/>
               <Route path='/contact' component={Contact}/>
               <Route path='/details/:id' component={Details}/>
-          </div>
-
-          <div className="Footer">
+              {/* <Route path= '/shop/brands/:brand' component={Brand}/> */}
 
           </div>
 
 
+          <div className="container3"></div>
+          
+<div className='footer'></div>
     </div> 
     );
   }

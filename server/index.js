@@ -38,21 +38,37 @@ const express= require ('express'),
         })
     })
 
+    app.get('/api/brands',(req,res)=>{
+        res.app.get('db').getBrandList().then((brands)=>{
+            res.json(brands)
+        })
+    })
  
     app.post('/api/cart',(req,res)=>{
-        const {userid,product}=req.body
+        const {userid,product,quantity}=req.body
         // determines whether the user already has a cart.
         res.app.get('db').cartcheck(userid).then((cart)=>{
                 if (cart[0]){
                     res.app.get('db').duplicateitems([product,cart[0].id]).then((lineitem)=>{
-        //determines whether there are duplicate items in the cart
+        //determines whether the same item is already in the cart and if so, update the quantity
                         if(lineitem[0]){
-                            res.app.get('db').
-                        } else console.log('no dups')
+                            console.log(quantity,lineitem[0].id)
+                            res.app.get('db').updateQuantity([quantity, lineitem[0].id])
+                        } else { 
+                            res.app.get('db').addNewLineItem([product,cart[0].id,quantity])
+                        }
                     }).catch((err)=>{console.log(err)})
 
+
+
         // user has no cart            
-         } else console.log('cart not found')
+         } else {
+                res.app.get('db').createNewCart(userid).then((response)=> {
+                    console.log(userid);
+                    // res.app.get('db').addNewLineItem([product,])
+                    console.log(response)
+                }).catch((err)=>{console.log(err)})
+            }
 
         })
 

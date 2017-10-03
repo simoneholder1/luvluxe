@@ -1,35 +1,76 @@
 
-
-.NavBar1{
+.NavBar1 {
   display: flex;
   justify-content: space-between;
   color: white;
-  background-color: #434343;;
-  width:100%;
-  height: 100%
-}
-
-
-.NavBar2{
-  display: flex;
-  justify-content: space-between;
-}
-
-.footer{
-  display: flex;
-  height: 100%;
-  width: 100vw;
   background-color: #434343;
+  width: 100%; 
+  font-size: 20px;
+  text-align: right;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  min-height: 25px;
+  padding: 15px;
+
 }
 
-.sell:hover{
+
+.Logo {
+  font-size: 35px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+
+}
+
+.NavBar2 {
+  display: flex;
+  justify-content: space-between; 
+  text-transform: uppercase;
+  font-size: 20px;
+  width: 75%;
+}
+
+.Homepage{
+  max-width: 1000px;
+  margin: auto;
+}
+
+
+.footer {
+  display: flex;
+  width: 100vw;
+  background-color: #434343; }
+
+.ShopSellRepeat{
+  font-size: 45px;
+  color: #434343;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  line-height: 10px;
+}
+.sell:hover {
   color: magenta;
-}
+ }
 
-.shop:hover{
-  color: magenta;
-}
+.shop:hover {
+  color: magenta; }
 
-.repeat:hover{
+.repeat:hover {
+  color: magenta; }
+
+.productContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+   }
+
+.productImage{
+  height: 150px;
+  width: 150px;
+}     
+
+.HomePageProducts p:hover{
   color: magenta;
 }

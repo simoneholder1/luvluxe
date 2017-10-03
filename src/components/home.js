@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import '../App.css';
 import {HashRouter, Route, Link, Switch} from 'react-router-dom';
 import axios from 'axios';
-import details from './details'
+import details from './details';
+import lastCall from '../lastCall.jpg'
 
 class Home extends Component  {
   constructor(){
@@ -38,17 +39,19 @@ this.displayProducts=this.displayProducts.bind(this);
     render() {
         const displayProducts= this.state.products.map((products,index)=>{
             return (
-                <Link key={index} to={`/details/${products.id}`}>
+                <div>
+                <Link className= "HomePageProducts" style={{textDecoration: 'none', color: '#434343'}}key={index} to={`/details/${products.id}`}>
            
-                <img className="HomePageProducts" src={products.imageurl}/>
-                <p>{products.brand}</p>
-                <p>${products.price}</p>
+                <img className="productImage" src={products.imageurl}/>
+                <p className="brand" > {products.brand}</p>
+                <p className="price" > ${products.price}</p>
                 </Link>
+                </div>
                 )
         })
         return (
-            <div>
-                <div>
+            <div className="Homepage">
+                <div className="ShopSellRepeat">
                    
                     <Link to="/shop" style={{textDecoration: 'none', color: '#434343'}}>
                         <h1 className='shop'>SHOP</h1>
@@ -61,11 +64,13 @@ this.displayProducts=this.displayProducts.bind(this);
                     </Link>
                 </div>
                 
-                {displayProducts}
+                <div className="productContainer">{displayProducts}</div>
+                
 
                 <div>
                     <Route path='/details/:id' component={details}/>
                 </div>
+
             </div>
         );
     
