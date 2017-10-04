@@ -40,7 +40,7 @@ class Catalog extends Component  {
               return (
                   <Link key={index} to={`/details/${products.id}`}>
              
-                  <img className="HomePageProducts" src={products.imageurl}/>
+                  <img className="AllProducts" src={products.imageurl}/>
                   <p>{products.brand}</p>
                   <p>{products.name}</p>
                   <p>${products.price}</p>

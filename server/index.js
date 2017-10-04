@@ -43,6 +43,12 @@ const express= require ('express'),
             res.json(brands)
         })
     })
+
+    app.get('/api/style',(req,res)=>{
+        res.app.get('db').getHandbagStyle().then((styles)=>{
+            res.json(styles)
+        })
+    })
  
     app.post('/api/cart',(req,res)=>{
         const {userid,product,quantity}=req.body

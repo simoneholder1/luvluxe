@@ -11,6 +11,14 @@ import About from './About';
 import Contact from './contact';
 import Details from './details.js';
 import DesignerDropDown from './DesignerDropDown';
+import HandbagDropDown from './HandbagDropDown';
+import '../css/footer.scss'
+import '../images/facebook.svg';
+import '../images/instagram.svg';
+import '../images/pinterest.svg';
+import '../images/twitter.svg';
+import Footer from './Footer';
+
 
 class App extends Component {
   constructor(){
@@ -55,9 +63,18 @@ handleHoverOff(param){
       }
     }
 
+    var styleList = ()=>{
+      if(this.state.handbags){
+        return (
+          <div>
+            <HandbagDropDown/>
+          </div>
+        )
+      }
+    }
 
     return (
-     <div>
+     <div className='background'>
           <div className='NavBar1'>
             <div>844.448.LUXE</div>
             <div><Link to='/contact' style={{textDecoration: 'none', color: "white"}}>contact</Link></div>
@@ -81,7 +98,10 @@ handleHoverOff(param){
             {designerList()}
             </div>
             
-            <div onMouseOver={()=>{this.handleHoverOn('handbags')}} onMouseLeave={()=>{this.handleHoverOff('handbags')}}>HANDBAGS</div>
+            <div onMouseOver={()=>{this.handleHoverOn('handbags')}} onMouseLeave={()=>{this.handleHoverOff('handbags')}}
+            >HANDBAGS
+            {styleList()}
+            </div>
             
             <div onMouseOver={()=>{this.handleHoverOn('accessories')}} onMouseLeave={()=>{this.handleHoverOff('accessories')}}>ACCESSORIES</div>
             
@@ -89,6 +109,11 @@ handleHoverOff(param){
             
             <div onMouseOver={()=>{this.handleHoverOn('discounted')}} onMouseLeave={()=>{this.handleHoverOff('discounted')}}>DISCOUNTED</div>
 
+            <div>
+              <input>
+
+              </input>
+            </div>
           </div>
 
           <div>
@@ -106,7 +131,9 @@ handleHoverOff(param){
 
           <div className="container3"></div>
           
-<div className='footer'></div>
+<div>
+  <Footer/>
+</div>
     </div> 
     );
   }

@@ -1,4 +1,8 @@
 
+.background{
+  background-color: lightgrey;
+}
+
 .NavBar1 {
   display: flex;
   justify-content: space-between;
@@ -19,37 +23,44 @@
   font-size: 35px;
   font-family: Arial, Helvetica, sans-serif;
   text-transform: uppercase;
+  background-color: white;
 
 }
+
 
 .NavBar2 {
   display: flex;
   justify-content: space-between; 
-  text-transform: uppercase;
+  background-color: white;
   font-size: 20px;
-  width: 75%;
+  width: 100%;
+
 }
 
 .Homepage{
   max-width: 1000px;
   margin: auto;
+  background-color: white;
 }
 
+.AllProducts{
+  background-color: white;
 
-.footer {
-  display: flex;
-  width: 100vw;
-  background-color: #434343; }
+}
+
+.Details{
+  background-color: white;
+}
 
 .ShopSellRepeat{
   font-size: 45px;
   color: #434343;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
-  align-items: center;
   flex-direction: column;
   line-height: 10px;
 }
+
 .sell:hover {
   color: magenta;
  }
@@ -74,3 +85,4 @@
 .HomePageProducts p:hover{
   color: magenta;
 }
+

@@ -38,7 +38,7 @@ class Details extends Component {
     render() {
       console.log(this.state);
             return (
-                <div>
+                <div className="Details">
                     <div className="product" >
                 <img src={this.state.productDetails.imageurl}/></div>
                 <div>
