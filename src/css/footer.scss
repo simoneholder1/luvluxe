@@ -2,29 +2,22 @@
     display: flex;
     width: 100%;
     height: 500px;
-    background-color: pink; 
+    background-color: #434343 ;
     color: white;
     font-size: 15px;
-    column-count: 4;
-  
-    
-  }
-
-.AboutUs{
-  display: flex;
-  color: white;
-}
-.Shopping{
-  display:flex;
-  color: white;
 }
 
-.MyAcct{
-  display: flex;
-  color: white;
+.AboutUs:hover{
+  color: magenta
+}
+.Shopping:hover{
+  color: magenta
 }
 
-.socialize{
-  display: flex;
-  color: white;
+.MyAcct:hover{
+  color: magenta
+}
+
+.socialize:hover{
+  color: magenta
 }

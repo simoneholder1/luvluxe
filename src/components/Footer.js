@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import '../App.css';
 import {HashRouter, Route, Link, Switch} from 'react-router-dom';
 import '../css/footer.scss';
-import '../images/facebook.svg';
-import '../images/instagram.svg';
-import '../images/pinterest.svg';
-import '../images/twitter.svg';
+import facebook from '../images/facebook.svg';
+import instagram from '../images/instagram.svg';
+import pinterest from '../images/pinterest.svg';
+import twitter from  '../images/twitter.svg';
 
 
 class Footer extends Component {
@@ -13,9 +13,10 @@ class Footer extends Component {
         return (
 
             <div className='footer'>
-                <div className='AboutUs'> 
+                <div>
                 ABOUT US and LOCATIONS
-                <ul>
+                
+                <div className='AboutUs'> 
                 <li>
                    Behind the Name</li>
                    <li>Scottsdale</li> 
@@ -23,13 +24,13 @@ class Footer extends Component {
                    <li>Unboxing Videos</li> 
                     <li>Careers</li>
                     
-                
-                </ul>
+                    </div>
                 
                 </div>
            
-                <div className="Shopping">
+                <div>
                     SHOPPING
+                    <div className="Shopping">
                         <li>FAQ</li>
                        <li>Authenticity</li>
                        <li>Certified</li>
@@ -40,10 +41,11 @@ class Footer extends Component {
                        <li>Shipping</li>
                     
                 </div>
+                </div>
 
-                <div className="MyAcct">
+                <div>
                     MY ACCOUNT
-                    <li>
+                    <div className="MyAcct">
                        <li>Sell Your Bag</li>
                        <li>Consignment</li>
                        <li>Alerts</li>
@@ -52,15 +54,20 @@ class Footer extends Component {
                        <li>Layaway</li>
                        <li>Wishlist</li>
 
-                    </li>
+                     </div>
                 </div>
 
-                <div className="socialize">
+                <div>
                     LET'S SOCIALIZE
-                  <li><img src='../../images/facebook.svg'/></li>  
-                    <li><img src='../../images/instagram.svg'/></li>
-                    <li><img src='../../images/pinterest.svg'/></li>
-                    <li><img src='../../images/twitter.svg'/></li>
+                    <div className="socialize">
+                    <span>
+                    <Link to='https://www.facebook.com/shopluvluxe/'>
+                    <img src={facebook}/></Link>
+                    <img src={instagram}/>
+                    <img src='../../images/pinterest.svg'/>
+                    <img src='../../images/twitter.svg'/>
+                    </span>
+                    </div>
                 </div> 
 
             </div>

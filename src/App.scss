@@ -1,6 +1,6 @@
 
 .background{
-  background-color: lightgrey;
+  background-color: #efefef;
 }
 
 .NavBar1 {
@@ -20,25 +20,31 @@
 
 
 .Logo {
+  display: flex;
+  align-content: center;
+  margin: auto;
   font-size: 35px;
   font-family: Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   background-color: white;
+  max-width: 1350px;
+  
 
 }
 
 
 .NavBar2 {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-around;
   background-color: white;
   font-size: 20px;
-  width: 100%;
+  max-width: 1350px;
+  margin: auto;
 
 }
 
 .Homepage{
-  max-width: 1000px;
+  max-width: 1350px;
   margin: auto;
   background-color: white;
 }
@@ -72,9 +78,7 @@
   color: magenta; }
 
 .productContainer{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  max-width: 1350px;
    }
 
 .productImage{

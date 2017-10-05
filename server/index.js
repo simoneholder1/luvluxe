@@ -50,6 +50,27 @@ const express= require ('express'),
         })
     })
  
+    //axios call for searched products
+    app.get('/api/search',(req,res)=>{
+        res.app.get('db').getProducts().then((products)=>{
+            products.filter((product)=>{
+                if(req.query.term.toLowerCase() == product.productname.toLowerCase() || 
+                req.query.term.toLowerCase() == product.brand.toLowerCase() || 
+                req.query.term.toLowerCase() == product.color.toLowerCase() || 
+                req.query.term.toLowerCase() == product.comeswith.toLowerCase() || 
+                req.query.term.toLowerCase() == product.accessorytype.toLowerCase() || 
+                req.query.term.toLowerCase() == product.style.toLowerCase() || 
+                req.query.term.toLowerCase() == product.material.toLowerCase()
+                ){
+                    return true
+                }
+
+            })
+        }
+            )
+    })
+
+
     app.post('/api/cart',(req,res)=>{
         const {userid,product,quantity}=req.body
         // determines whether the user already has a cart.

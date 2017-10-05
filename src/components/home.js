@@ -33,13 +33,15 @@ this.displayProducts=this.displayProducts.bind(this);
 
   componentDidMount(){
     this.displayProducts()
+    
   }
 
 
     render() {
+
         const displayProducts= this.state.products.map((products,index)=>{
             return (
-                <div>
+                <div key={index}>
                 <Link className= "HomePageProducts" style={{textDecoration: 'none', color: '#434343'}}key={index} to={`/details/${products.id}`}>
            
                 <img className="productImage" src={products.imageurl}/>
@@ -49,6 +51,12 @@ this.displayProducts=this.displayProducts.bind(this);
                 </div>
                 )
         })
+
+        
+        
+
+
+
         return (
             <div className="Homepage">
                 <div className="ShopSellRepeat">
@@ -64,6 +72,20 @@ this.displayProducts=this.displayProducts.bind(this);
                     </Link>
                 </div>
                 
+                {this.state.products.length>0 ? 
+                <div> Hi my name is Simone!!!!!!!!
+                <div>{this.state.products[0].imageurl}</div>
+                <div>{this.state.products[0].name}</div>
+                <div>${this.state.products[0].price}</div>
+                </div> : null
+                
+              }
+
+
+
+
+
+
                 <div className="productContainer">{displayProducts}</div>
                 
 
