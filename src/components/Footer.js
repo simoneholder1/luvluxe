@@ -4,7 +4,6 @@ import {HashRouter, Route, Link, Switch} from 'react-router-dom';
 import '../css/footer.scss';
 import facebook from '../images/facebook.svg';
 import instagram from '../images/instagram.svg';
-import pinterest from '../images/pinterest.svg';
 import twitter from  '../images/twitter.svg';
 
 
@@ -63,9 +62,8 @@ class Footer extends Component {
                     <span>
                     <Link to='https://www.facebook.com/shopluvluxe/'>
                     <img src={facebook}/></Link>
-                    <img src={instagram}/>
-                    <img src='../../images/pinterest.svg'/>
-                    <img src='../../images/twitter.svg'/>
+                    <Link to='https://www.instagram.com/luv_luxe/'><img src={instagram}/> </Link>
+                    <Link to='https://twitter.com/luv_luxe'><img src={twitter}/></Link>
                     </span>
                     </div>
                 </div> 

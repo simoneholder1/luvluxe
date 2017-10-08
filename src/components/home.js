@@ -37,6 +37,8 @@ this.displayProducts=this.displayProducts.bind(this);
   }
 
 
+  
+
     render() {
 
         const displayProducts= this.state.products.map((products,index)=>{
@@ -71,13 +73,20 @@ this.displayProducts=this.displayProducts.bind(this);
                         <h1 className='repeat'>REPEAT.</h1>
                     </Link>
                 </div>
-                
+               
+
                 {this.state.products.length>0 ? 
-                <div> Hi my name is Simone!!!!!!!!
-                <div>{this.state.products[0].imageurl}</div>
-                <div>{this.state.products[0].name}</div>
-                <div>${this.state.products[0].price}</div>
-                </div> : null
+                <div> 
+                   
+                <div>
+                    {this.state.products[Math.floor(Math.random()*this.state.products.length)].name}</div>
+
+                <div><img src={this.state.products[Math.floor(Math.random()*this.state.products.length)].imageurl}/></div>
+
+                <div>${this.state.products[Math.floor(Math.random()*this.state.products.length)].price}</div>
+
+                </div> 
+                : null
                 
               }
 

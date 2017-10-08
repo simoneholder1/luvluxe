@@ -18,6 +18,7 @@ import '../images/instagram.svg';
 import '../images/pinterest.svg';
 import '../images/twitter.svg';
 import Footer from './Footer';
+import shoppingBag from '../images/shoppingBag.svg';
 
 
 class App extends Component {
@@ -80,7 +81,7 @@ handleHoverOff(param){
             <div><Link to='/contact' style={{textDecoration: 'none', color: "white"}}>contact</Link></div>
             
             <div ><Link to ='/login' style={{textDecoration: 'none', color: "white"}}>Login</Link></div>
-            <div><Link to='/cart' style={{textDecoration: 'none', color: "white"}}>Cart</Link></div>
+            <div><Link to='/cart' style={{textDecoration: 'none', color: "white"}}><img src={shoppingBag} color='white' width='50%' height='55%'/>Cart</Link></div>
             <div><Link to='/about' style={{textDecoration: 'none', color: "white"}}>About Us</Link></div>
             <div><Link to='/login' style={{textDecoration: 'none', color: "white"}}>Sell Your Bag</Link></div>
            
