@@ -6,11 +6,9 @@ import '../App.css';
 class DesignerDropDown extends Component {
     constructor(){
         super()
-this.state={
-    designers: []
-}
-
-
+        this.state={
+            designers: []
+        }
     }
     
 
@@ -23,21 +21,27 @@ componentDidMount(){
 }
 
 
+
+
     render() {
-        console.log(this.state,'designerdrop down state')
-      const  displayDesigners = this.state.designers.map((product)=>{
+      const  displayDesigners = this.state.designers.map((product,index)=>{
           return (
-            <div > 
-            <Link className= "designerDropDown" style={{textDecoration: 'none', color: '#434343'}} to={`/${product.brand}`}> 
+            <div key={index}> 
+            <Link className= "designerDropDown" style={{textDecoration: 'none', color: '#434343'}} to={`/brand/${product.brand}`}> 
             {product.brand}
             </Link>
             </div>
             )
       })
+      
+   
 
         return (
             <div> 
                 {displayDesigners}
+
+
+
             </div>
         );
     }

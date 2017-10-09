@@ -11,11 +11,11 @@ class Home extends Component  {
 
     this.state={
       products:[],
-      cart:[]
+      cart:[],
+      randomNumber: 0
 
   }
 
-this.displayProducts=this.displayProducts.bind(this);
 
 }
 
@@ -23,17 +23,15 @@ this.displayProducts=this.displayProducts.bind(this);
 
 // to display products we want to send a request to the server via an axios.get request, then the server will return a response with the data we want. Once the data is returned it will setState with the updated products
 
-  displayProducts(){
-    axios.get('/api/products').then((res)=>{
-        this.setState({
-      products: res.data})
-  })
-  }
+
 
 
   componentDidMount(){
-    this.displayProducts()
-    
+    axios.get('/api/products').then((res)=>{
+        this.setState({
+        products: res.data,
+        randomNumber: Math.floor(Math.random()*res.data.length)})
+  })
   }
 
 
@@ -41,6 +39,7 @@ this.displayProducts=this.displayProducts.bind(this);
 
     render() {
 
+        
         const displayProducts= this.state.products.map((products,index)=>{
             return (
                 <div key={index}>
@@ -58,7 +57,6 @@ this.displayProducts=this.displayProducts.bind(this);
         
 
 
-
         return (
             <div className="Homepage">
                 <div className="ShopSellRepeat">
@@ -73,23 +71,26 @@ this.displayProducts=this.displayProducts.bind(this);
                         <h1 className='repeat'>REPEAT.</h1>
                     </Link>
                 </div>
-               
+
+                
 
                 {this.state.products.length>0 ? 
                 <div> 
-                   
+                    <Link to="/shop"> 
+                    <h1> SHOP {this.state.products[this.state.randomNumber].brand} </h1> 
+                    </Link>
+
                 <div>
-                    {this.state.products[Math.floor(Math.random()*this.state.products.length)].name}</div>
+                    {this.state.products[this.state.randomNumber].productname}</div>
 
-                <div><img src={this.state.products[Math.floor(Math.random()*this.state.products.length)].imageurl}/></div>
+                <div><img src={this.state.products[this.state.randomNumber].imageurl}/></div>
 
-                <div>${this.state.products[Math.floor(Math.random()*this.state.products.length)].price}</div>
+                <div>${this.state.products[this.state.randomNumber].price}</div>
 
                 </div> 
                 : null
                 
               }
-
 
 
 

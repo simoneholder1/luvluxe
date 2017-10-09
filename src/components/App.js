@@ -12,13 +12,16 @@ import Contact from './contact';
 import Details from './details.js';
 import DesignerDropDown from './DesignerDropDown';
 import HandbagDropDown from './HandbagDropDown';
-import '../css/footer.scss'
+import Brand from './Brand';
+import Style from './Style';
+import '../css/footer.scss';
 import '../images/facebook.svg';
 import '../images/instagram.svg';
 import '../images/pinterest.svg';
 import '../images/twitter.svg';
 import Footer from './Footer';
 import shoppingBag from '../images/shoppingBag.svg';
+import NewArrivals from './NewArrivals';
 
 
 class App extends Component {
@@ -42,20 +45,24 @@ handleHoverOn(param){
   var x = {}
   x[param] = true;
   this.setState(x)
+  // this.setState({
+  //   [param]: true
+  // })
 }
 
 handleHoverOff(param){
   var x = {}
   x[param] = false;
   this.setState(x)
- 
+//  this.setState({
+//    [param]: false
+//  })
 }
 
 
     
 //change phone number to allow a call to be made if done on a mobile device
   render() {
-
     var designerList = ()=>{
       if( this.state.designers){
         return( <div>
@@ -79,7 +86,6 @@ handleHoverOff(param){
           <div className='NavBar1'>
             <div>844.448.LUXE</div>
             <div><Link to='/contact' style={{textDecoration: 'none', color: "white"}}>contact</Link></div>
-            
             <div ><Link to ='/login' style={{textDecoration: 'none', color: "white"}}>Login</Link></div>
             <div><Link to='/cart' style={{textDecoration: 'none', color: "white"}}><img src={shoppingBag} color='white' width='50%' height='55%'/>Cart</Link></div>
             <div><Link to='/about' style={{textDecoration: 'none', color: "white"}}>About Us</Link></div>
@@ -91,8 +97,8 @@ handleHoverOff(param){
           <div className='Logo'><Link to ='/' style={{textDecoration: 'none', color: "#434343"}}> FASHIONPHILE </Link> </div>
 
           <div className='NavBar2'>
-            <Link to='/new'></Link>
-            <div>NEW ARRIVALS</div>
+            <Link to='/newarrivals'style={{textDecoration: 'none', color: '#434343'}}> <div>NEW ARRIVALS</div></Link>
+            
             
           
             <div onMouseOver={()=>{this.handleHoverOn('designers')}} onMouseLeave={()=>{this.handleHoverOff('designers')}} >DESIGNERS
@@ -125,8 +131,9 @@ handleHoverOff(param){
               <Route path='/about' component={About}/>
               <Route path='/contact' component={Contact}/>
               <Route path='/details/:id' component={Details}/>
-              {/* <Route path= '/shop/brands/:brand' component={Brand}/> */}
-
+              <Route path='/newarrivals' component={NewArrivals}/>
+              <Route path='/brand/:brand' component={Brand}/>
+              <Route path='/style/:style' component={Style}/>>
           </div>
 
 

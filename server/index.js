@@ -21,9 +21,14 @@ const express= require ('express'),
         console.log("connected to DB")
     })
 
-
+//Axios endpoint to get recently added products for new arrival page.
+    app.get('/api/newarrivals',(req,res)=>{
+        res.app.get('db').getNewInventory().then((Products)=>{
+            res.json(Products)
+        })
+    })
    
-
+// Axios endpoint to get products to display on catalog page.
     app.get('/api/products',(req,res)=>{
         console.log(req.app.get('db'));
         const db= req.app.get('db');
@@ -32,25 +37,43 @@ const express= require ('express'),
         })
     })
 
+// Axios endpoint to get the details of a specific item.    
     app.get('/api/details/:id',(req,res)=>{
         res.app.get('db').returnProductById([req.params.id]).then((product)=>{
             res.json(product[0])
         })
     })
 
+
+// Axios endpoint to get the brands for the drop down.    
     app.get('/api/brands',(req,res)=>{
         res.app.get('db').getBrandList().then((brands)=>{
             res.json(brands)
         })
     })
-
-    app.get('/api/style',(req,res)=>{
-        res.app.get('db').getHandbagStyle().then((styles)=>{
-            res.json(styles)
+    
+    // Axios endpoint to get the handbag style for the drop down.    
+        app.get('/api/style',(req,res)=>{
+            console.log(res.app.get('db').getHandbagStyle())
+            res.app.get('db').getHandbagStyle().then((styles)=>{
+                res.json(styles)
+            })
         })
+     
+// Axios endpoint to get products with the specific brand in the URL.
+app.get('/api/brand/:brand',(req,res)=>{
+    res.app.get('db').getSpecificBrand([req.params.brand]).then((products)=>{
+        res.json(products)
     })
- 
-    //axios call for searched products
+})
+
+
+//Axios endpoint to get products with the specific style in the URL.
+app.get('/api/style/:style',(req,res)=>{
+    res.app.get('db').getSpecificHandbagStyle([req.params.style]).then((products)=>{res.json(products)})
+})
+
+// Axios endpoint for searched products
     app.get('/api/search',(req,res)=>{
         res.app.get('db').getProducts().then((products)=>{
             products.filter((product)=>{
@@ -63,13 +86,18 @@ const express= require ('express'),
                 req.query.term.toLowerCase() == product.material.toLowerCase()
                 ){
                     return true
+                } else {
+                    return "Oh no, it looks like we do not have that inventory available!"
                 }
 
-            })
+            }) 
         }
             )
     })
 
+
+
+// Axios endpoint for cart    
 
     app.post('/api/cart',(req,res)=>{
         const {userid,product,quantity}=req.body

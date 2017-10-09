@@ -6,8 +6,8 @@ import '../App.css';
 class HandbagDropDown extends Component {
     constructor(){
         super()
-this.state={
-    handbags: []
+        this.state={
+        handbags: []
 }
     }
     
@@ -21,11 +21,10 @@ componentDidMount(){
 
 
     render() {
-        console.log(this.state,'handbagStyle down state')
-      const  displayHandbagStyles = this.state.handbags.map((product)=>{
+      const  displayHandbagStyles = this.state.handbags.map((product,index)=>{
           return (
-            <div > 
-            <Link className= "handbagStyle" style={{textDecoration: 'none', color: '#434343'}} to={`/${product.style}`}> 
+            <div key={index} > 
+            <Link className= "handbagStyle" style={{textDecoration: 'none', color: '#434343'}} to={`/style/${product.style}`}> 
             {product.style}
             </Link>
             </div>
