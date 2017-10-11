@@ -31,7 +31,7 @@ class Brand extends Component {
     render() {
         const displayProducts= this.state.products.map((product,index)=>{
             return(
-                <Link key={index} to={`/brand/${product.brand}`}>
+                <Link key={index} to={`/details/${product.id}`}>
                 <img className="Allproduct" src={product.imageurl}/>
                   <p>{product.brand}</p>
                   <p>{product.productname}</p>
@@ -44,7 +44,7 @@ class Brand extends Component {
         return (
             <div>
                 {displayProducts}
-                
+
             </div>
         );
     }

@@ -68,6 +68,8 @@ class Footer extends Component {
                     </div>
                 </div> 
 
+                <div>
+                    <Link to='/Admin'>Admin</Link></div>
             </div>
         );
     }

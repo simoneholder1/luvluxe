@@ -1,3 +1,6 @@
+import axios from 'axios';
+
+
 // Redux is needed in order to save and change state for the following components: 
 // Cart
 // Home Page Products
@@ -8,15 +11,19 @@
 const initialState={
     products: [],
     cart: [],
-    // catalog: [],
-    // login: ''
+    searchResults: [],
+    catalog: [],
+    login: ''
 }
 
 // const DISPLAY_PRODUCTS = "DISPLAY_PRODUCTS";
-const ADD_TO_CART = "ADD_TO_CART";
 // const DISPLAY_CATALOG_PRODUCTS= "DISPLAY_CATALOG_PRODUCTS";
+const ADD_TO_CART = "ADD_TO_CART";
 const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 const UPDATE_CART="UPDATE_CART";
+const SEARCH_RESULTS="SEARCH_RESULTS";
+const GET_USER="GET_USER";
+
 
 //This is the reducer function, which allows you to take in two things: the type? and the payload. The Type is.... and the payload is any info that we will need to update state. 
 
@@ -24,18 +31,23 @@ export default (state = initialState, action) => {
     switch(action.type){
     //     case DISPLAY_PRODUCTS:
     //         return Object.assign({},state, {products: action.payload})
-        case ADD_TO_CART: 
-            
+        case ADD_TO_CART + '_FULFILLED': 
             return Object.assign({},state, {cart: action.payload})
         // case DISPLAY_CATALOG_PRODUCTS:
         //     return Object.assign({},state, {catalog: action.payload})
         
-        case REMOVE_FROM_CART:
+        case REMOVE_FROM_CART + '_FULFILLED':
+            
+                let newArray = state.cart.slice();
+                newArray.splice(action.payload,1);
+                return Object.assign({},state, {cart: newArray})
+        
+        case UPDATE_CART + '_FULFILLED':     
             return Object.assign({},state, {cart: action.payload})
 
-        
-        case UPDATE_CART:     
-            return Object.assign({},state, {cart: action.payload})
+    
+        case GET_USER + '_FULFILLED':
+            return Object.assign({},state, {user: action.payload})
         default: return state;
     }
 }
@@ -59,15 +71,20 @@ export default (state = initialState, action) => {
 export function addToCart(product){
     return{
         type: 'ADD_TO_CART',
-        payload: product,
+        payload: axios.post('/api/cart',{
+            productid: product.id,
+            userid: 1
+        }).then((cart)=>{
+            return cart.data
+        }).catch(err=> console.log("add cart error"))
     }
 }
 
 
-export function removeFromCart(product){
+export function removeFromCart(productIndex){
     return{
         type: 'REMOVE_FROM_CART',
-        payload: product,
+        payload: productIndex,
     }
 }
 
@@ -75,5 +92,12 @@ export function updateCart(product){
     return{
         type: 'UPDATE_CART',
         payload: product,
+    }
+}
+
+export function returnResults(searchResults){
+    return{
+        type: 'SEARCH_RESULTS',
+        payload: searchResults
     }
 }

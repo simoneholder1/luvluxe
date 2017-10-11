@@ -14,6 +14,8 @@ import DesignerDropDown from './DesignerDropDown';
 import HandbagDropDown from './HandbagDropDown';
 import Brand from './Brand';
 import Style from './Style';
+import Search from './Search';
+import Admin from './Admin';
 import '../css/footer.scss';
 import '../images/facebook.svg';
 import '../images/instagram.svg';
@@ -22,6 +24,8 @@ import '../images/twitter.svg';
 import Footer from './Footer';
 import shoppingBag from '../images/shoppingBag.svg';
 import NewArrivals from './NewArrivals';
+import {connect} from 'react-redux';
+import {returnResults} from '../ducks/reducer.js';
 
 
 class App extends Component {
@@ -32,12 +36,15 @@ class App extends Component {
       handbags: false,
       accessories: false, 
       jewelry: false,
-      discounted: false
+      discounted: false,
+      searchText: '',
+      
 
     }
 
     this.handleHoverOn = this.handleHoverOn.bind(this);
     this.handleHoverOff = this.handleHoverOff.bind(this);
+
 }
 
 //param is going to be one of the properties above.
@@ -58,6 +65,20 @@ handleHoverOff(param){
 //    [param]: false
 //  })
 }
+
+onSearchChange(e){
+  this.setState({
+      searchText: e.target.value
+  })
+}
+
+getResults(){
+  axios.get('/api/search?term='+this.state.searchText).then((res)=>{
+    this.props.history.push("/search")
+      this.props.returnResults(res.data)
+  })
+}
+
 
 
     
@@ -117,9 +138,8 @@ handleHoverOff(param){
             <div onMouseOver={()=>{this.handleHoverOn('discounted')}} onMouseLeave={()=>{this.handleHoverOff('discounted')}}>DISCOUNTED</div>
 
             <div>
-              <input>
-
-              </input>
+              <input onChange={(e)=>{this.onSearchChange(e)}}></input>
+              <button onClick={(e)=>{this.getResults()}}>Search</button>
             </div>
           </div>
 
@@ -133,7 +153,9 @@ handleHoverOff(param){
               <Route path='/details/:id' component={Details}/>
               <Route path='/newarrivals' component={NewArrivals}/>
               <Route path='/brand/:brand' component={Brand}/>
-              <Route path='/style/:style' component={Style}/>>
+              <Route path='/style/:style' component={Style}/>
+              <Route path='/search' component={Search}/>
+              <Route path='/Admin' component={Admin}/>
           </div>
 
 
@@ -147,4 +169,10 @@ handleHoverOff(param){
   }
 }
 
-export default App;
+
+function mapStateToProps(store){
+  return{
+      
+  }
+}
+export default connect(null,{returnResults})(App);

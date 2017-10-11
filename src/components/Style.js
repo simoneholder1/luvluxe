@@ -31,7 +31,7 @@ class Style extends Component {
     render() {
         const displayProducts=this.state.products.map((product,index)=>{
             return(
-                <Link key={index} to={`/style/${product.style}`}>
+                <Link key={index} to={`/details/${product.id}`}>
                 <img className="Allproduct" src={product.imageurl}/>
                 <p>{product.brand}</p>
                 <p>{product.productname}</p>

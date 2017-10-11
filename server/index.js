@@ -1,10 +1,11 @@
 const express= require ('express'),
     bodyParser= require ('body-parser'),
     cors= require ('cors'),
-    massive=require ('massive');
+    massive=require ('massive')
+    // stripe = require ('stripe')(config.secret_key);
 
  // allows this to connect to process.env once we attempt to invoke massive.    
-    require('dotenv').config()
+  require('dotenv').config()
 
 
    const app =express();
@@ -75,42 +76,54 @@ app.get('/api/style/:style',(req,res)=>{
 
 // Axios endpoint for searched products
     app.get('/api/search',(req,res)=>{
-        res.app.get('db').getProducts().then((products)=>{
-            products.filter((product)=>{
-                if(req.query.term.toLowerCase() == product.productname.toLowerCase() || 
-                req.query.term.toLowerCase() == product.brand.toLowerCase() || 
-                req.query.term.toLowerCase() == product.color.toLowerCase() || 
-                req.query.term.toLowerCase() == product.comeswith.toLowerCase() || 
-                req.query.term.toLowerCase() == product.accessorytype.toLowerCase() || 
-                req.query.term.toLowerCase() == product.style.toLowerCase() || 
-                req.query.term.toLowerCase() == product.material.toLowerCase()
-                ){
-                    return true
-                } else {
-                    return "Oh no, it looks like we do not have that inventory available!"
-                }
-
-            }) 
-        }
-            )
+        res.app.get('db').searchProducts(['%'+req.query.term+'%']).then((products)=>{
+           res.json(products)})
     })
 
-
+// Axios endpoint to add new products to database
+    app.post('/api/products',(req,res)=>{
+        req.app.get('db').insertNewItems([
+            req.body.imageUrl,
+            req.body. brand,
+            req.body.productName,
+            req.body.price,
+            req.body.dateAdded,
+            req.body.accessoryType,
+            req.body.color,
+            req.body.material,
+            req.body.style,
+            req.body.detail,
+            req.body.length,
+            req.body. width,
+            req.body.height,
+            req.body.drop,
+            req.body.productLocation,
+            req.body.yearMade,
+            req.body.comesWith
+        ]).then(()=>{console.log('Added Successfully');res.send('Item added successfully!')})
+    })
 
 // Axios endpoint for cart    
-
+// cart check 1- userid
     app.post('/api/cart',(req,res)=>{
         const {userid,product,quantity}=req.body
         // determines whether the user already has a cart.
-        res.app.get('db').cartcheck(userid).then((cart)=>{
+        req.app.get('db').cartcheck([userid]).then((cart)=>{
                 if (cart[0]){
-                    res.app.get('db').duplicateitems([product,cart[0].id]).then((lineitem)=>{
+                    req.app.get('db').duplicateitems([productid,cart[0].id]).then((dup)=>{
         //determines whether the same item is already in the cart and if so, update the quantity
-                        if(lineitem[0]){
+                        if(dup[0]){
                             console.log(quantity,lineitem[0].id)
-                            res.app.get('db').updateQuantity([quantity, lineitem[0].id])
+                            req.app.get('db').updateQuantity([dup[0].quantity + 1, dup[0].productid]).then(()=>{req.app.get('db').returnCart([cart[0].id]).then((cartItems)=>{
+                                res.send(cartItems)
+                            })
+                        console.log("We found a duplicate!")})
                         } else { 
-                            res.app.get('db').addNewLineItem([product,cart[0].id,quantity])
+                            req.app.get('db').addToCart([productid,cart[0].id]).then(()=>{
+                                req.app.get('db').returnCart([cart[0].id]).then((cartItems)=>{
+                                    res.send(cartItems)
+                                })
+                            })
                         }
                     }).catch((err)=>{console.log(err)})
 
@@ -118,10 +131,12 @@ app.get('/api/style/:style',(req,res)=>{
 
         // user has no cart            
          } else {
-                res.app.get('db').createNewCart(userid).then((response)=> {
-                    console.log(userid);
-                    // res.app.get('db').addNewLineItem([product,])
-                    console.log(response)
+                req.app.get('db').createNewCart([userid]).then((response)=> {
+                    req.app.get('db').addToCart([product,cart[0].id]).then(()=>{
+                        req.app.get('db').returnCart([cart[0].id]).then((cartItems)=>{
+                            res.send(cartItems)
+                        })
+                    })
                 }).catch((err)=>{console.log(err)})
             }
 

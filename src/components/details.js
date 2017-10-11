@@ -1,28 +1,16 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
-// import {connect} from 'react-redux';
-
-
-// import {addToCart} from '../ducks/reducer';
+import {connect} from 'react-redux';
+import {addToCart} from '../ducks/reducer';
 
 
 class Details extends Component {
     constructor(){
         super()
-
         this.state={
             productDetails:{}
         }
-
-  
     }
-// addToCart(){
-//     axios.post(`/api/cart/${this.props.match.params.id}`).then((res)=>{this.props.addToCart()
-        
-//     })
-// }
-
 
 
   componentWillMount(){
@@ -36,7 +24,7 @@ class Details extends Component {
 
 
     render() {
-      console.log(this.state);
+        
             return (
                 <div className="Details">
                     <div className="product" >
@@ -45,18 +33,17 @@ class Details extends Component {
             <p>{this.state.productDetails.brand}</p>
             <p>{this.state.productDetails.productname}</p>
             <p>{this.state.productDetails.detail}</p>
-            <p>{this.state.productDetails.length}</p>
-            <p>{this.state.productDetails.width}</p>
-            <p>{this.state.productDetails.height}</p>
-            <p>{this.state.productDetails.drop}</p>
+            <p>length: {this.state.productDetails.length}in.</p>
+            <p>width: {this.state.productDetails.width}in.</p>
+            <p>height: {this.state.productDetails.height}in.</p>
+            <p>drop: {this.state.productDetails.drop}in.</p>
             <p>{this.state.productDetails.productlocation}</p>
             <p>{this.state.productDetails.yearmade}</p>
             <p>{this.state.productDetails.comeswith}</p>
             <p>${this.state.productDetails.price}</p>
             </div>
 
-            <button onClick={()=>{
-                }}>Add to Cart</button>
+            <button onClick={(e)=>{ this.props.addToCart(this.state.productDetails)}}>Add to Cart</button>
             </div> )
                 
                 
@@ -66,12 +53,10 @@ class Details extends Component {
     
 
 
-// function mapStateToProps(store){
-//     return{
-//         cart: store.cart
-//     }
-// }
+function mapStateToProps(store){
+    return{
+      
+    }
+}
 
-// export default connect(mapStateToProps)(Details);
-
-export default Details;
+export default connect(mapStateToProps,{addToCart})(Details);

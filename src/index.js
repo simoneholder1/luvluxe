@@ -11,7 +11,7 @@ ReactDOM.render(
 
 <Provider store={store}>
 <HashRouter>
-    <App />
+    <Route path="/" component={App} />
 </HashRouter>    
 </Provider>
 , document.getElementById('root'));
