@@ -25,7 +25,7 @@ import Footer from './Footer';
 import shoppingBag from '../images/shoppingBag.svg';
 import NewArrivals from './NewArrivals';
 import {connect} from 'react-redux';
-import {returnResults} from '../ducks/reducer.js';
+import {returnResults, getCart} from '../ducks/reducer.js';
 import FontAwesome from 'react-fontawesome';
 
 
@@ -81,7 +81,9 @@ getResults(){
 }
 
 
-
+componentDidMount(){
+ this.props.getCart()
+}
     
 //change phone number to allow a call to be made if done on a mobile device
   render() {
@@ -114,7 +116,7 @@ getResults(){
             className="shoppingbag"
             name=  */}
             {<img src={shoppingBag} alt="" color='white' width='50%' height='55%'/>}
-            Cart</Link></div>
+            Cart({this.props.cart.length})</Link></div>
             <div><Link to='/about' style={{textDecoration: 'none', color: "white"}}>About Us</Link></div>
             <div><Link to='/login' style={{textDecoration: 'none', color: "white"}}>Sell Your Bag</Link></div>
            
@@ -179,7 +181,7 @@ getResults(){
 
 function mapStateToProps(store){
   return{
-      
+      cart: store.cart
   }
 }
-export default connect(null,{returnResults})(App);
+export default connect(mapStateToProps,{returnResults, getCart})(App);
