@@ -1,0 +1,55 @@
+.footer{
+  
+
+.columns {
+    @include flexSetUp(flex-start,column);
+    width: auto;
+    height: 500px;
+    background-color: #434343 ;
+    color: #CCCCCC;
+    font-size: 20px;
+    justify-content: space-around;
+    font-family: "Century Gothic", "Helvetica Neue", Hevetic, Arial;
+    line-height: 1.5;
+    
+    p{
+      margin-left: 10px;
+    }
+
+    p:hover{
+      color: $pink;
+      cursor: pointer;
+    }
+
+    h3{
+      font-size: 25px;
+      padding: 10px;
+      color: white;
+      font-weight: 300;
+      
+      
+    }
+
+    .consign{
+      @include flexSetUp(flex-start,center, column);
+    }
+    
+    }
+
+.Money{
+  position: absolute;
+  top: 900px;
+
+  h1{
+    font-weight: 500;
+
+  }
+
+  h1:hover{
+    color:$pink;
+  }
+}
+
+    
+
+  }

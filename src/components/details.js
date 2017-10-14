@@ -28,7 +28,7 @@ class Details extends Component {
             return (
                 <div className="Details">
                     <div className="product" >
-                <img src={this.state.productDetails.imageurl}/></div>
+                <img src={this.state.productDetails.imageurl} alt=""/></div>
                 <div>
             <p>{this.state.productDetails.brand}</p>
             <p>{this.state.productDetails.productname}</p>

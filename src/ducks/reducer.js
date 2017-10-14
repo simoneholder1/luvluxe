@@ -1,3 +1,6 @@
+import React, {Component} from 'react';
+
+
 import axios from 'axios';
 
 
@@ -23,6 +26,7 @@ const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 const UPDATE_CART="UPDATE_CART";
 const SEARCH_RESULTS="SEARCH_RESULTS";
 const GET_USER="GET_USER";
+const GET_CART="GET_CART";
 
 
 //This is the reducer function, which allows you to take in two things: the type? and the payload. The Type is.... and the payload is any info that we will need to update state. 
@@ -40,11 +44,13 @@ export default (state = initialState, action) => {
             
                 let newArray = state.cart.slice();
                 newArray.splice(action.payload,1);
-                return Object.assign({},state, {cart: newArray})
+                return Object.assign({},state, {cart: action.payload})
         
         case UPDATE_CART + '_FULFILLED':     
             return Object.assign({},state, {cart: action.payload})
 
+        case GET_CART+ '_FULFILLED':
+            return Object.assign({},state, {cart: action.payload})
     
         case GET_USER + '_FULFILLED':
             return Object.assign({},state, {user: action.payload})
@@ -73,20 +79,32 @@ export function addToCart(product){
         type: 'ADD_TO_CART',
         payload: axios.post('/api/cart',{
             productid: product.id,
-            userid: 1
+            userid: 2
         }).then((cart)=>{
             return cart.data
         }).catch(err=> console.log("add cart error"))
     }
 }
 
-
-export function removeFromCart(productIndex){
+export function getCart(){
     return{
-        type: 'REMOVE_FROM_CART',
-        payload: productIndex,
+        type:'GET_CART',
+        payload: axios.get('/api/cart').then((res)=>{
+            return res.data
+        })
     }
 }
+
+
+
+export function removeFromCart(productIndex,userid){
+    return{
+        type: 'REMOVE_FROM_CART',
+        payload: axios.delete(`/api/products/${productIndex}/2`).then((res)=>{
+            return res.data
+    }).
+    catch((err)=>{console.log(err)})
+}}
 
 export function updateCart(product){
     return{

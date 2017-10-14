@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {HashRouter, Route, Link, Switch} from 'react-router-dom';
-import '../App.css';
+import {Link} from 'react-router-dom';
+import '../style/css/main.css';
 
 class HandbagDropDown extends Component {
     constructor(){

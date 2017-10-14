@@ -55,7 +55,6 @@ const express= require ('express'),
     
     // Axios endpoint to get the handbag style for the drop down.    
         app.get('/api/style',(req,res)=>{
-            console.log(res.app.get('db').getHandbagStyle())
             res.app.get('db').getHandbagStyle().then((styles)=>{
                 res.json(styles)
             })
@@ -106,20 +105,21 @@ app.get('/api/style/:style',(req,res)=>{
 // Axios endpoint for cart    
 // cart check 1- userid
     app.post('/api/cart',(req,res)=>{
-        const {userid,product,quantity}=req.body
+        console.log('we have arrived')
+        const {userid,productid,quantity}=req.body
         // determines whether the user already has a cart.
         req.app.get('db').cartcheck([userid]).then((cart)=>{
                 if (cart[0]){
                     req.app.get('db').duplicateitems([productid,cart[0].id]).then((dup)=>{
         //determines whether the same item is already in the cart and if so, update the quantity
                         if(dup[0]){
-                            console.log(quantity,lineitem[0].id)
+                            console.log("cart already active",quantity,lineitem[0].id)
                             req.app.get('db').updateQuantity([dup[0].quantity + 1, dup[0].productid]).then(()=>{req.app.get('db').returnCart([cart[0].id]).then((cartItems)=>{
                                 res.send(cartItems)
                             })
                         console.log("We found a duplicate!")})
                         } else { 
-                            req.app.get('db').addToCart([productid,cart[0].id]).then(()=>{
+                            req.app.get('db').addToCart([productid,cart[0].id,1]).then(()=>{
                                 req.app.get('db').returnCart([cart[0].id]).then((cartItems)=>{
                                     res.send(cartItems)
                                 })
@@ -131,12 +131,17 @@ app.get('/api/style/:style',(req,res)=>{
 
         // user has no cart            
          } else {
+             console.log(userid)
                 req.app.get('db').createNewCart([userid]).then((response)=> {
-                    req.app.get('db').addToCart([product,cart[0].id]).then(()=>{
+                    req.app.get('db').cartcheck([userid]).then((cart)=>{
+                        console.log('before add to Cart',cart[0])
+                    req.app.get('db').addToCart([product,cart[0].id,1]).then(()=>{
+                        console.log('after abc')
                         req.app.get('db').returnCart([cart[0].id]).then((cartItems)=>{
                             res.send(cartItems)
                         })
                     })
+                })
                 }).catch((err)=>{console.log(err)})
             }
 
@@ -149,7 +154,18 @@ app.get('/api/style/:style',(req,res)=>{
     // add something to a cart
     // retrieve infor from what is inside of that particular cart.
 
-    
+    // delete from cart
+    app.delete('/api/products/:id/:userid',(req,res)=>{
+        req.app.get('db').cartcheck([req.params.userid]).then((order)=>{
+            console.log("delete endpoint",req.params.id,order[0].id)
+    req.app.get('db').deleteItem([req.params.id,order[0].id]).then((cart)=>{
+            req.app.get('db').returnCart([order[0].id]).then((cart)=>{
+                res.send(cart);
+            })
+            // Insert the entire content of what is left remaining in your cart.
+        })
+    })
+})
 
     // create an end point that receives a request from the agent for saving an object to the cart.
     app.post('/api/cart',(req,res)=>{
@@ -160,6 +176,16 @@ app.get('/api/style/:style',(req,res)=>{
         
     })
 
+
+    //Just Return the Cart
+    app.get('/api/cart',(req,res)=>{
+        req.app.get('db').cartcheck(2).then((orders)=>{
+            req.app.get('db').returnCart([orders[0].id]).then((cart)=>{
+                res.send(cart);
+
+            })
+        })
+    })
 
 
     const port= 3030

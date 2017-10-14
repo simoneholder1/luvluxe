@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
 import axios from 'axios';
 
 
@@ -40,7 +39,7 @@ class Catalog extends Component  {
               return (
                   <Link key={index} to={`/details/${products.id}`}>
              
-                  <img className="AllProducts" src={products.imageurl}/>
+                  <img className="AllProducts" src={products.imageurl} alt=""/>
                   <p>{products.brand}</p>
                   <p>{products.productname}</p>
                   <p>${products.price}</p>

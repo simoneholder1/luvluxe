@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {HashRouter, Route, Link, Switch} from 'react-router-dom';
-import '../App.css';
+import { Link} from 'react-router-dom';
+import '../style/css/main.css';
 
 
 class Brand extends Component {
@@ -32,7 +32,7 @@ class Brand extends Component {
         const displayProducts= this.state.products.map((product,index)=>{
             return(
                 <Link key={index} to={`/details/${product.id}`}>
-                <img className="Allproduct" src={product.imageurl}/>
+                <img className="Allproduct" src={product.imageurl} alt=""/>
                   <p>{product.brand}</p>
                   <p>{product.productname}</p>
                   <p>${product.price}</p>

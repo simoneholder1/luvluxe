@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import '../App.css';
-import {HashRouter, Route, Link, Switch} from 'react-router-dom';
+import '../style/css/main.css';
+import { Route, Link} from 'react-router-dom';
 import axios from 'axios';
 import details from './details';
-import lastCall from '../lastCall.jpg'
+// import lastCall from '../lastCall.jpg'
 
 class Home extends Component  {
   constructor(){
@@ -45,7 +45,7 @@ class Home extends Component  {
                 <div key={index}>
                 <Link className= "HomePageProducts" style={{textDecoration: 'none', color: '#434343'}}key={index} to={`/details/${products.id}`}>
            
-                <img className="productImage" src={products.imageurl}/>
+                <img className="productImage" src={products.imageurl} alt=""/>
                 <p className="brand" > {products.brand}</p>
                 <p className="price" > ${products.price}</p>
                 </Link>
@@ -83,7 +83,7 @@ class Home extends Component  {
                 <div>
                     {this.state.products[this.state.randomNumber].productname}</div>
 
-                <div><img src={this.state.products[this.state.randomNumber].imageurl}/></div>
+                <div><img src={this.state.products[this.state.randomNumber].imageurl} alt=""/></div>
 
                 <div>${this.state.products[this.state.randomNumber].price}</div>
 

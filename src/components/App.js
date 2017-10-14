@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
-import '../App.css';
-import {HashRouter, Route, Link, Switch} from 'react-router-dom';
+import '../style/css/main.css';
+import { Route, Link} from 'react-router-dom';
 import axios from 'axios';
 import Home from './home';
 import Cart from './cart';
@@ -16,7 +16,7 @@ import Brand from './Brand';
 import Style from './Style';
 import Search from './Search';
 import Admin from './Admin';
-import '../css/footer.scss';
+import '../style/css/main.css';
 import '../images/facebook.svg';
 import '../images/instagram.svg';
 import '../images/pinterest.svg';
@@ -26,6 +26,7 @@ import shoppingBag from '../images/shoppingBag.svg';
 import NewArrivals from './NewArrivals';
 import {connect} from 'react-redux';
 import {returnResults} from '../ducks/reducer.js';
+import FontAwesome from 'react-fontawesome';
 
 
 class App extends Component {
@@ -108,7 +109,12 @@ getResults(){
             <div>844.448.LUXE</div>
             <div><Link to='/contact' style={{textDecoration: 'none', color: "white"}}>contact</Link></div>
             <div ><Link to ='/login' style={{textDecoration: 'none', color: "white"}}>Login</Link></div>
-            <div><Link to='/cart' style={{textDecoration: 'none', color: "white"}}><img src={shoppingBag} color='white' width='50%' height='55%'/>Cart</Link></div>
+            <div><Link to='/cart' style={{textDecoration: 'none', color: "white"}}>
+            {/* <FontAwesome
+            className="shoppingbag"
+            name=  */}
+            {<img src={shoppingBag} alt="" color='white' width='50%' height='55%'/>}
+            Cart</Link></div>
             <div><Link to='/about' style={{textDecoration: 'none', color: "white"}}>About Us</Link></div>
             <div><Link to='/login' style={{textDecoration: 'none', color: "white"}}>Sell Your Bag</Link></div>
            
@@ -156,6 +162,7 @@ getResults(){
               <Route path='/style/:style' component={Style}/>
               <Route path='/search' component={Search}/>
               <Route path='/Admin' component={Admin}/>
+              <Route path='/consign'/>
           </div>
 
 

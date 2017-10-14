@@ -2,17 +2,25 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {getUser} from '../ducks/reducer';
 import {removeFromCart} from '../ducks/reducer';
+import {getCart} from '../ducks/reducer';
 // import {updateCart} from '../ducks/reducer';
 
 class Cart extends Component {
+   
+   componentDidMount(){
+    this.props.getCart()
+   }
+
+   
     render() {
             let displayCartContent= this.props.cart.map((products, i)=>{
         return (
             <div key={i}> 
                <h1>{products.productname}</h1> 
+               <p>{products.id}</p>
                <p>{products.brand}</p>
-               <p>{products.price}</p>
-                <button onClick={(()=>this.props.removeFromCart(i))}> Remove </button>
+               <p>${products.price}</p>
+                <button onClick={(()=>this.props.removeFromCart(products.id))}> Remove </button>
             </div>
         )
     })
@@ -33,4 +41,4 @@ function mapStateToProps(store){
 }
 
 
-export default connect (mapStateToProps,{removeFromCart})(Cart);
+export default connect (mapStateToProps,{removeFromCart, getCart})(Cart);
