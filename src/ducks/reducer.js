@@ -78,8 +78,7 @@ export function addToCart(product){
     return{
         type: 'ADD_TO_CART',
         payload: axios.post('/api/cart',{
-            productid: product.id,
-            userid: 2
+            productid: product.id
         }).then((cart)=>{
             return cart.data
         }).catch(err=> console.log("add cart error"))
@@ -100,7 +99,8 @@ export function getCart(){
 export function removeFromCart(productIndex,userid){
     return{
         type: 'REMOVE_FROM_CART',
-        payload: axios.delete(`/api/products/${productIndex}/2`).then((res)=>{
+        payload: axios.delete(`/api/products/${productIndex}`).then((res)=>{
+            console.log(res.data)
             return res.data
     }).
     catch((err)=>{console.log(err)})

@@ -96,9 +96,11 @@ values
 ;
 
 
+
 create table LuvLuxeUsers(
 id serial primary key,
-username varchar(80)
+auth_id 
+email varchar(80)
 )
 
 

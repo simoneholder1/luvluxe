@@ -26,7 +26,7 @@ import shoppingBag from '../images/shoppingBag.svg';
 import NewArrivals from './NewArrivals';
 import {connect} from 'react-redux';
 import {returnResults, getCart} from '../ducks/reducer.js';
-import FontAwesome from 'react-fontawesome';
+
 
 
 class App extends Component {
@@ -108,24 +108,34 @@ componentDidMount(){
     return (
      <div className='background'>
           <div className='NavBar1'>
-            <div>844.448.LUXE</div>
-            <div><Link to='/contact' style={{textDecoration: 'none', color: "white"}}>contact</Link></div>
-            <div ><Link to ='/login' style={{textDecoration: 'none', color: "white"}}>Login</Link></div>
-            <div><Link to='/cart' style={{textDecoration: 'none', color: "white"}}>
+            <div className="Left">
+            <div className='InsideLeft'>844.448.LUXE</div>
+            <div className='InsideLeft'><Link to='/contact' style={{textDecoration: 'none', color: "white"}}>contact</Link></div>
+            
+
+            </div>
+
+
+            <div className="Right">
+              <div className="InsideRight"><Link to ='/login' style={{textDecoration: 'none', color: "white"}}>Login</Link></div>
+
+            
+            <div className='InsideRight'><Link to='/cart' style={{textDecoration: 'none', color: "white"}}>
             {/* <FontAwesome
             className="shoppingbag"
             name=  */}
-            {<img src={shoppingBag} alt="" color='white' width='50%' height='55%'/>}
-            Cart({this.props.cart.length})</Link></div>
-            <div><Link to='/about' style={{textDecoration: 'none', color: "white"}}>About Us</Link></div>
-            <div><Link to='/login' style={{textDecoration: 'none', color: "white"}}>Sell Your Bag</Link></div>
-           
+            {/* {<img src={shoppingBag} alt="" color='white' width='50%' height='55%'/>} */}
+            Cart({this.props.cart.reduce((sum,items)=>{return sum + (items.quantity)},0)})</Link></div>
+            <div className="InsideRight"><Link to='/about' style={{textDecoration: 'none', color: "white"}}>About Us</Link></div>
+            <div className="InsideRight"> <Link to='/login' style={{textDecoration: 'none', color: "white"}}>Sell Your Bag</Link></div>
+            </div>
             
           </div>
 
           <div className='Logo'><Link to ='/' style={{textDecoration: 'none', color: "#434343"}}> FASHIONPHILE </Link> </div>
 
           <div className='NavBar2'>
+            <div className= 'InsideNavBar2'>
             <Link to='/newarrivals'style={{textDecoration: 'none', color: '#434343'}}> <div>NEW ARRIVALS</div></Link>
             
             
@@ -145,12 +155,12 @@ componentDidMount(){
             
             <div onMouseOver={()=>{this.handleHoverOn('discounted')}} onMouseLeave={()=>{this.handleHoverOff('discounted')}}>DISCOUNTED</div>
 
-            <div>
+            <div className="Search">
               <input onChange={(e)=>{this.onSearchChange(e)}}></input>
               <button onClick={(e)=>{this.getResults()}}>Search</button>
             </div>
           </div>
-
+          </div>
           <div>
               <Route exact path='/' component={Home}/>
               <Route path='/cart' component={Cart}/>

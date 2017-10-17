@@ -1,10 +1,14 @@
+
+
 .footer{
+  height: 100%;
+ 
   
 
 .columns {
     @include flexSetUp(flex-start,column);
     width: auto;
-    height: 500px;
+    height: 400px;
     background-color: #434343 ;
     color: #CCCCCC;
     font-size: 20px;
@@ -30,26 +34,34 @@
       
     }
 
-    .consign{
-      @include flexSetUp(flex-start,center, column);
-    }
+    
     
     }
+    
+    .Money{
+      @include flexSetUp(flex-start,center, column);
+      width: 100%;
+      height:100px;
+      background-color: $dark-grey;
+      padding-bottom: 15px;
+      
 
-.Money{
-  position: absolute;
-  top: 900px;
+      h1{
+        font-size: 40px;
+        padding-bottom: 20px;
+      }
 
-  h1{
-    font-weight: 500;
 
-  }
+      h1:hover{
+        color: $pink
+      }
+      
+    }
 
-  h1:hover{
-    color:$pink;
-  }
+    
+
 }
 
     
 
-  }
+  

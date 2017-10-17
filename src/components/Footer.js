@@ -70,23 +70,25 @@ class Footer extends Component {
                     <Link to='/Admin'>Admin</Link></div>
                 
                 </div> 
-
+                </div>
 
                <div className="Money">
-                   <Link to='/consign' style={{textDecoration: 'none', color: "#CCCCCC"}}>Money For Your Bags</Link>
-                 <div className='img-container'></div> 
+                   <Link to='/consign' style={{textDecoration: 'none', color: "#CCCCCC"}}> <h1>Money For Your Bags. </h1></Link>
+                  
                  <img src={featuredPress} alt=""/>
-                </div> 
+                 </div> 
 
-            </div>
+            
+            </div> 
 
-
+            
+                
               
                   
 
 
    
-</div>
+
 
            
         );

@@ -1,0 +1,11 @@
+.NavBar2{
+    
+    @include flexSetUp(flex-start, row);
+    background-color: white;
+    color: #434343;
+    width: 100%;
+    height: 25px;
+    font-size: 20px;
+    font-family: Hevetic, Arial;
+    
+}

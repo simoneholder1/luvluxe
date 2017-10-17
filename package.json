@@ -28,6 +28,7 @@
     "stripe": "^5.1.1"
   },
   "scripts": {
+    "server":"nodemon --watch server",
     "build-css": "node-sass-chokidar  src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar   src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
