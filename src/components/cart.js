@@ -72,7 +72,7 @@ class Cart extends Component {
             
             <StripeCheckout
                             token={this.onToken}
-                            stripeKey={ stripe }
+                            stripeKey={ process.env.REACT_APP_STRIPEKEY }
                             amount={cartTotal *100}
             />
    
