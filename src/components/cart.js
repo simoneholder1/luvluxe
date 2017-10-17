@@ -5,7 +5,6 @@ import {removeFromCart} from '../ducks/reducer';
 import {getCart} from '../ducks/reducer';
 // import {updateCart} from '../ducks/reducer';
 import StripeCheckout from 'react-stripe-checkout';
-import stripe from '../stripeKey';
 import axios from 'axios'
 
 
