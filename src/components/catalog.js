@@ -48,7 +48,8 @@ class Catalog extends Component  {
                   )
           })
           return (
-              <div>
+              
+              <div className="displayProducts">
                  
                   
                   {displayProducts}

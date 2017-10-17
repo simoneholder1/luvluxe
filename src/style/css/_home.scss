@@ -1,0 +1,44 @@
+body {
+    background-color: white;
+}
+
+  .Homepage {
+    max-width: 1350px;
+    margin: auto;
+    background-color: white; }
+  
+  .AllProducts {
+    background-color: white; }
+  
+  .Details {
+    background-color: white; }
+  
+  .ShopSellRepeat {
+    font-size: 45px;
+    color: #434343;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    line-height: 10px; 
+  
+  .sell:hover {
+    color: magenta; }
+  
+  .shop:hover {
+    color: magenta; }
+  
+  .repeat:hover {
+    color: magenta; }
+  
+  }
+
+  .productContainer {
+    max-width: 1350px; }
+  
+  .productImage {
+    height: 150px;
+    width: 150px; }
+  
+  .HomePageProducts p:hover {
+    color: magenta; }
+  

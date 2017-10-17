@@ -26,6 +26,7 @@ import shoppingBag from '../images/shoppingBag.svg';
 import NewArrivals from './NewArrivals';
 import {connect} from 'react-redux';
 import {returnResults, getCart} from '../ducks/reducer.js';
+import FontAwesome from 'react-fontawesome';
 
 
 
@@ -109,8 +110,15 @@ componentDidMount(){
      <div className='background'>
           <div className='NavBar1'>
             <div className="Left">
-            <div className='InsideLeft'>844.448.LUXE</div>
-            <div className='InsideLeft'><Link to='/contact' style={{textDecoration: 'none', color: "white"}}>contact</Link></div>
+            <div className='InsideLeft'>
+            <FontAwesome
+            name='phone' />
+              844.448.LUXE</div>
+            <div className='InsideLeft'><Link to='/contact' style={{textDecoration: 'none', color: "white"}}>
+            
+            <FontAwesome
+           name='envelope' />
+            contact</Link></div>
             
 
             </div>
@@ -121,10 +129,9 @@ componentDidMount(){
 
             
             <div className='InsideRight'><Link to='/cart' style={{textDecoration: 'none', color: "white"}}>
-            {/* <FontAwesome
-            className="shoppingbag"
-            name=  */}
-            {/* {<img src={shoppingBag} alt="" color='white' width='50%' height='55%'/>} */}
+            <FontAwesome
+            className='rocket'
+            name='shopping-bag' />
             Cart({this.props.cart.reduce((sum,items)=>{return sum + (items.quantity)},0)})</Link></div>
             <div className="InsideRight"><Link to='/about' style={{textDecoration: 'none', color: "white"}}>About Us</Link></div>
             <div className="InsideRight"> <Link to='/login' style={{textDecoration: 'none', color: "white"}}>Sell Your Bag</Link></div>
