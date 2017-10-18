@@ -62,14 +62,14 @@ const express= require ('express'),
 
         app.get('/auth/logout',(req,res)=>{
             req.logOut();
-            res.redirect(302, 'https://simoneholder1.auth0.com/v2/logout?returnTo=http%3A%2F%2Flocalhost%3A3030%2F&client_id=W8f4hY97be7DqCItsG7XGYC9iobESDG_')
+            res.redirect(302, `https://simoneholder1.auth0.com/v2/logout?returnTo=http://slhportfolio.info&client_id=W8f4hY97be7DqCItsG7XGYC9iobESDG_`)
         })
 
         })
         app.get('/auth', passport.authenticate('auth0'));
         app.get('/auth/callback', passport.authenticate('auth0',{
-            successRedirect: 'http://localhost:3030/#/',
-            failureRedirect: 'localhost:3030/fail'
+            successRedirect: 'http://slhportfolio.info/#/',
+            failureRedirect: 'http://slhportfolio.info/fail'
         }))
 
        app.get('/api/user',  passport.authenticate('auth0'), (req, res) => {
