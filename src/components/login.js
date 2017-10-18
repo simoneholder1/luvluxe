@@ -7,11 +7,11 @@ class Login extends Component {
             <div>
                 Login
 
-                <a className='auth0' href={`${process.env.REACT_APP_HOSTEDURL}/auth`}>
+                <a className='auth0' href={`http://slhportfolio.info:3030/auth`}>
                      <button className='Login'> Login or Register </button> 
                 </a>
 
-                <a href={`${process.env.REACT_APP_HOSTEDURL}/auth/logout`}>
+                <a href={`http://slhportfolio.info:3030/auth/logout`}>
                     <button className='logout buttontheme'> Logout </button> 
                 </a>
 
