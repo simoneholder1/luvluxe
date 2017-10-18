@@ -62,7 +62,7 @@ const express= require ('express'),
 
         app.get('/auth/logout',(req,res)=>{
             req.logOut();
-            res.redirect(302, `https://simoneholder1.auth0.com/v2/logout?returnTo=http%3A%2F%2Fwww.slhportfolio.info:3030&client_id=b5cBFep7SfSvaPxpE0RDmdPocSEkBVen_`)
+            res.redirect(302, `https://simoneholder1.auth0.com/v2/logout?returnTo=http%3A%2F%2Fwww.slhportfolio.info&client_id=b5cBFep7SfSvaPxpE0RDmdPocSEkBVen_`)
         })
 
         })
