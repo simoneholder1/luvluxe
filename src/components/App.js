@@ -139,7 +139,7 @@ componentDidMount(){
             
           </div>
 
-          <div className='Logo'><Link to ='/' style={{textDecoration: 'none', color: "#434343"}}> FASHIONPHILE </Link> </div>
+          <div className='Logo'><Link to ='/' style={{textDecoration: 'none', color: "#434343"}}> LUVLUXE </Link> </div>
 
           <div className='NavBar2'>
             <div className= 'InsideNavBar2'>
@@ -164,7 +164,10 @@ componentDidMount(){
 
             <div className="Search">
               <input onChange={(e)=>{this.onSearchChange(e)}}></input>
-              <button onClick={(e)=>{this.getResults()}}>Search</button>
+              <button onClick={(e)=>{this.getResults()}}>
+              <FontAwesome
+              name="search" />
+              </button>
             </div>
           </div>
           </div>

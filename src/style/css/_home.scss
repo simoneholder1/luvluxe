@@ -1,44 +1,55 @@
-body {
-    background-color: white;
-}
+
 
   .Homepage {
-    max-width: 1350px;
+    background-color: white;
+    max-width: 60%;
     margin: auto;
-    background-color: white; }
-  
-  .AllProducts {
-    background-color: white; }
-  
-  .Details {
-    background-color: white; }
-  
-  .ShopSellRepeat {
-    font-size: 45px;
-    color: #434343;
     font-family: Arial, Helvetica, sans-serif;
-    display: flex;
-    flex-direction: column;
-    line-height: 10px; 
-  
-  .sell:hover {
-    color: magenta; }
-  
-  .shop:hover {
-    color: magenta; }
-  
-  .repeat:hover {
-    color: magenta; }
-  
-  }
+    color: #434343;
 
-  .productContainer {
-    max-width: 1350px; }
+ .productContainer {
+  @include flexSetUp(flex-start, row);
+    max-width: 1350px; 
   
   .productImage {
     height: 150px;
     width: 150px; }
   
+  
   .HomePageProducts p:hover {
     color: magenta; }
+
+  }
+  }
+
+.shopSpecificBrand{
   
+}
+
+  
+
+  
+  
+  .ShopSellRepeat {
+    padding-top: 100px;
+    padding-left:300px;
+    font-size: 50px;
+   
+
+     .sell:hover {
+    color: $pink; }
+  
+  .shop:hover {
+    color: $pink; }
+  
+  .repeat:hover {
+    color: $pink; }
+  }
+
+
+  
+ 
+  
+  
+
+ 

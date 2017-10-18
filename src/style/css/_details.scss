@@ -1,0 +1,12 @@
+.Details{
+    background-color: white;
+
+    img{
+        
+            @include flexSetUp(flex-start, row);
+           
+              height: 300px;
+              width: 300px; 
+    }
+
+}

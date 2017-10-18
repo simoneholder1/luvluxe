@@ -75,19 +75,22 @@ class Home extends Component  {
                 
 
                 {this.state.products.length>0 ? 
-                <div> 
-                    <Link to="/shop"> 
+                <div>
+                <div className='shopSpecificBrand'> 
+                    <Link to="/shop" style={{textDecorationColor:'lightgrey'  }}> 
                     <h1> SHOP {this.state.products[this.state.randomNumber].brand} </h1> 
                     </Link>
+                    </div>
+                <div className="RandomImage">
+                <div className='shopSpecificProduct'>
+                    {this.state.products[this.state.randomNumber].productname}${this.state.products[this.state.randomNumber].price}
+                    </div> 
+                <img src={this.state.products[this.state.randomNumber].imageurl} alt=""/></div>
 
-                <div>
-                    {this.state.products[this.state.randomNumber].productname}</div>
+                
 
-                <div><img src={this.state.products[this.state.randomNumber].imageurl} alt=""/></div>
-
-                <div>${this.state.products[this.state.randomNumber].price}</div>
-
-                </div> 
+                
+                </div>
                 : null
                 
               }

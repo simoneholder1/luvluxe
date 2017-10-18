@@ -5,9 +5,14 @@ import facebook from '../images/facebook.svg';
 import instagram from '../images/instagram.svg';
 import twitter from  '../images/twitter.svg';
 import featuredPress from '../images/featuredPress.gif';
+import FontAwesome from 'react-fontawesome';
 
 
 class Footer extends Component {
+
+
+//<a hfref="www.insta.com"></a>
+
     render() {
         return (
 
@@ -57,10 +62,10 @@ class Footer extends Component {
                     <h3>LET'S SOCIALIZE</h3>
                     <div className="socialize">
                     <span>
-                        <Link to='https://www.facebook.com/shopluvluxe/'>
-                    <img src={facebook} alt=""/></Link>
-                    <Link to='https://www.instagram.com/luv_luxe/'><img src={instagram} alt=""/> </Link>
-                    <Link to='https://twitter.com/luv_luxe'><img src={twitter} alt=""/></Link>
+                        <a href='https://www.facebook.com/shopluvluxe/'>
+                    <img src={facebook} alt=""/></a>
+                    <a  href='https://www.instagram.com/luv_luxe/'><img src={instagram} alt=""/> </a>
+                    <a href='https://twitter.com/luv_luxe'><img src={twitter} alt=""/></a>
                     
                     </span>
                     </div>
@@ -73,9 +78,14 @@ class Footer extends Component {
                 </div>
 
                <div className="Money">
-                   <Link to='/consign' style={{textDecoration: 'none', color: "#CCCCCC"}}> <h1>Money For Your Bags. </h1></Link>
+                   <Link to='/consign' style={{textDecoration: 'none', color: "#CCCCCC"}}> 
+                   
+                   <h1>Money For Your Bags  <FontAwesome
+                  className="caret-right"
+                  name='caret-right'/> </h1>
                   
-                 <img src={featuredPress} alt=""/>
+                  </Link>
+                 <img className='FeaturedPress' src={featuredPress} alt=""/>
                  </div> 
 
             

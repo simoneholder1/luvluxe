@@ -33,9 +33,10 @@
   }
 
   .Logo{
-    padding-left: 200px;
-    padding-top: 40px;
     background-color: white;
+    max-width: 60%;
+    margin: auto;
+    padding-top: 40px;
     text-transform: uppercase;
     font-family: Arial;
     font-size: 55px;
@@ -47,9 +48,9 @@
 .NavBar2{
   @include flexSetUp(flex-start, row);
   background-color: white;
-  width: 100%;
+  width: 60%;
   height: 50px;
-
+  margin: auto;
 
   
 }
@@ -68,71 +69,3 @@
   
   
 }
-
-// .Left{
-
-// }
-
-// .Right{
- 
-// }
-
-
-//   }
-  
-//   // .Logo {
-//   //   display: flex;
-//   //   align-content: center;
-//   //   margin: auto;
-//   //   font-size: 35px;
-//   //   font-family: Arial, Helvetica, sans-serif;
-//   //   text-transform: uppercase;
-//   //   background-color: white;
-//   //   max-width: 1350px; }
-  
-//   // .NavBar2 {
-//   //   display: flex;
-//   //   justify-content: space-around;
-//   //   background-color: white;
-//   //   font-size: 20px;
-//   //   max-width: 1350px;
-//   //   margin: auto; }
-  
-//   // .Homepage {
-//   //   max-width: 1350px;
-//   //   margin: auto;
-//   //   background-color: white; }
-  
-//   // .AllProducts {
-//   //   background-color: white; }
-  
-//   // .Details {
-//   //   background-color: white; }
-  
-//   // .ShopSellRepeat {
-//   //   font-size: 45px;
-//   //   color: #434343;
-//   //   font-family: Arial, Helvetica, sans-serif;
-//   //   display: flex;
-//   //   flex-direction: column;
-//   //   line-height: 10px; }
-  
-//   // .sell:hover {
-//   //   color: magenta; }
-  
-//   // .shop:hover {
-//   //   color: magenta; }
-  
-//   // .repeat:hover {
-//   //   color: magenta; }
-  
-//   // .productContainer {
-//   //   max-width: 1350px; }
-  
-//   // .productImage {
-//   //   height: 150px;
-//   //   width: 150px; }
-  
-//   // .HomePageProducts p:hover {
-//   //   color: magenta; }
-  
