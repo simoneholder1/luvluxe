@@ -1,19 +1,20 @@
 .background {
     background-color: #efefef;   
   }
-  
+ 
+
 .NavBar1 {
     @include flexSetUp(flex-start, row);
     color: white;
     background-color: #434343;
     width: 100%;
-    height: 20px;
-    font-size: 18px;
+    height: 15px;
+    font-size: 15px;
     font-family: Hevetic, Arial;
     text-transform: uppercase;
     justify-content: space-between;
-    padding-top: 15px;
-    padding-bottom: 12px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 
   .Right{
      @include flexSetUp(flex-end,row); 
@@ -36,40 +37,46 @@
   }
 
   .Logo{
+    @include flexSetUp(flex-start,flex-start, row);
     background-color: white;
-    max-width: 57%;
+    width: 60%;
     margin: auto;
-    padding-top: 40px;
+    padding-top: 20px;
     padding-left: 60px;
+    box-sizing: border-box;
     text-transform: uppercase;
     font-family: Arial;
     font-size: 55px;
-    height: 55px;
     color: #434343;
   }
 
 
 .NavBar2{
-  @include flexSetUp(flex-start, row);
+  @include flexSetUp(flex-start,flex-start, row);
   background-color: white;
   width: 60%;
-  height: 50px;
+  height: 70px;
   margin: auto;
-
-  
+  box-sizing: border-box;
+  text-transform: uppercase;
+  font-family: Arial;
+  font-size: 55px;
+  color: #434343; 
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 1;
+  top: 0;
 }
+
 .InsideNavBar2{
   @include flexSetUp(space-between, center, row);
   text-transform: uppercase;
   color: #434343;
   width: 90%;
   height: 50px;
-  font-size: 20px;
+  font-size: 18px;
   font-family: Arial;
   padding-top: 15px;
   margin: auto;
  
-
-  
-  
 }

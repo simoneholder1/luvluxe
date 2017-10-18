@@ -37,19 +37,21 @@ class Catalog extends Component  {
       render() {
           const displayProducts= this.state.products.map((products,index)=>{
               return (
+                  <div className='catalogProducts'>
                   <Link key={index} to={`/details/${products.id}`}>
              
-                  <img className="AllProducts" src={products.imageurl} alt=""/>
+                  <img className='imgContainer' src={products.imageurl} alt=""/>
                   <p>{products.brand}</p>
                   <p>{products.productname}</p>
                   <p>${products.price}</p>
 
                   </Link>
+                  </div>
                   )
           })
           return (
               
-              <div className="displayProducts">
+              <div className="catalog">
                  
                   
                   {displayProducts}

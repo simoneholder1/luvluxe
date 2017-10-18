@@ -1,0 +1,29 @@
+
+.catalog{
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+background-color:white;
+justify-content: center;
+align-items: center;
+width: 60%;
+margin: auto;
+
+
+    .catalogProducts{
+
+        // display: flex;
+        // flex-wrap: wrap;
+        // align-items: center;
+        width: 47%;
+        text-align: center;
+    
+        .imgContainer{
+            height: 400px;
+            width: 400px;
+        }
+    
+        
+    }
+}
+

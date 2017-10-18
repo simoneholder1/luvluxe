@@ -10,9 +10,6 @@ import FontAwesome from 'react-fontawesome';
 
 class Footer extends Component {
 
-
-//<a hfref="www.insta.com"></a>
-
     render() {
         return (
 
@@ -91,6 +88,9 @@ class Footer extends Component {
 
                  <p>We are Your Premium Luxury Handbag Outlet. Since 1999, LuvLuxe has worked hard to become the leading and most trusted source in the secondary market for luxury handbags. Buy that irresistible authentic nearly new, vintage, rare or limited edition Louis Vuitton, Hermes, Chanel, Gucci, Balenciaga, Bottega Veneta, Marc Jacobs, Prada, Chloe, Fendi, Christian Dior, and Burberry designer handbags at exceptional value. We can help you clean out your closet, earn quick cash and make room for more amazing bags! You'll always find a great selection of original gently used designer shoulder bags, clutches, totes, wallets, IPad or tablets, luggage, and other lavish accessories at truly affordable prices. Every item goes through an extensive procedure by our skilled experts, to guarantee 100% authenticity. Our success is measured by continuous shopper support and our renowned worldwide luxury handbag selection. LuvLuxe has had the honor to be recognized by: The Wall Street Journal, Good Day LA, Fox 11, Good Morning America, The Today Show, and E! Entertainment TV Live from the Red Carpet Academy Awards--but we are more honored by our loyal customer following.</p>
 
+
+                <p className="SignOff">We are your Premium Luxury Handbag Outlet © LuvLuxe, LLC</p>
+                <p className="Disclaimer">Disclaimer: This website was created by a student for a project. It is not an official business.</p>
                  </div> 
             </div> 
 

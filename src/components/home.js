@@ -3,7 +3,10 @@ import '../style/css/main.css';
 import { Route, Link} from 'react-router-dom';
 import axios from 'axios';
 import details from './details';
-// import lastCall from '../lastCall.jpg'
+import lastCall from '../images/lastcall.jpg';
+import layAway from '../images/layaway.jpg';
+import boutiques from '../images/boutiques.jpg';
+import cash from '../images/cash.jpg';
 
 class Home extends Component  {
   constructor(){
@@ -59,6 +62,7 @@ class Home extends Component  {
 
         return (
             <div className="Homepage">
+                <div className="topHolder">
                 <div className="ShopSellRepeat">
                    
                     <Link to="/shop" style={{textDecoration: 'none', color: '#434343'}}>
@@ -75,18 +79,20 @@ class Home extends Component  {
                 
 
                 {this.state.products.length>0 ? 
+                <div className='featuredProduct'>
+                
                 <div>
+                <div className='RandomImage'>
+                <img className="RandomImg" src={this.state.products[this.state.randomNumber].imageurl} alt=""/>
+                    <div className="RandomProductName">{this.state.products[this.state.randomNumber].productname}</div>
+                    <div className="RandomProductPrice">${this.state.products[this.state.randomNumber].price}</div>
+                    </div> 
+                </div>
                 <div className='shopSpecificBrand'> 
-                    <Link to="/shop" style={{textDecorationColor:'lightgrey'  }}> 
+                    <Link to="/shop" style={{color:'#efefef'}}> 
                     <h1> SHOP {this.state.products[this.state.randomNumber].brand} </h1> 
                     </Link>
                     </div>
-                <div className="RandomImage">
-                <div className='shopSpecificProduct'>
-                    {this.state.products[this.state.randomNumber].productname}${this.state.products[this.state.randomNumber].price}
-                    </div> 
-                <img src={this.state.products[this.state.randomNumber].imageurl} alt=""/></div>
-
                 
 
                 
@@ -94,9 +100,23 @@ class Home extends Component  {
                 : null
                 
               }
+        </div>
+            <div className='container'>
+                <img className="lastcallimg" src={lastCall} />
+                <Link to="/" className='lastcalltext' style={{textDecoration: 'none', color: 'white'}}> last call </Link>
+            </div>
+            
+            <div className="triimage">
+               
+                <img className="layawayimg" src={layAway}  />
+            
+                
+            
+              <img className="boutiques" src={boutiques}/>
+              <img className="cash" src={cash}/>
 
-
-
+            </div>
+            
 
 
                 <div className="productContainer">{displayProducts}</div>
