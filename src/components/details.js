@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import {addToCart} from '../ducks/reducer';
+import '../style/css/main.css';
 
 
 class Details extends Component {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import '../style/css/main.css';
 
 
 class Catalog extends Component  {
